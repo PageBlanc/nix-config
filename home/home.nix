@@ -27,6 +27,9 @@ configSops ? true,
   home.username = lib.mkIf (!isOs) "${username}";
   home.homeDirectory = lib.mkIf (!isOs) "${homeDir}";
 
+  #discord
+  programs.discord.enable = true;
+
   home.stateVersion = "25.11";
 
   # sops = lib.mkIf configSops{

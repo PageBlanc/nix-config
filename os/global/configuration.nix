@@ -101,10 +101,17 @@
   # List packages installed in system profile. To search, run
   nixpkgs.config.allowUnfree = true;
   # $ nix search wget
+
+  #docker
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
+  };
+
   environment.systemPackages = with pkgs; [
   
   # dev
-  vim vscode git gcc valgrind python3 gdb clang cmake docker docker-compose
+  vim vscode git gcc valgrind python3 gdb clang cmake gnumake
 
   # system
   htop btop fastfetch lsof file which zip unzip p7zip xclip wev
