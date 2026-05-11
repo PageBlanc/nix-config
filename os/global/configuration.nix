@@ -6,9 +6,24 @@
 
 {
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/vda";
-  boot.loader.grub.useOSProber = true;
+
+  boot.loader = { 
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
+
+  services.xserver.videoDrivers = ["nvidia" "modesetting"];
+
+  hardware.nvidia = {
+    open = false;
+	modesetting.enable = true;
+	prime = {
+      intelBusId = "PCI:0@0:2:0";
+      nvidiaBusId = "PCI:1@0:0:0";
+	};
+  };
+
+
 
   networking.hostName = "pageblanche"; # Define your hostname.
   networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
